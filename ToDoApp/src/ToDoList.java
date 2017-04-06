@@ -12,22 +12,22 @@ public class ToDoList {
   }
 
   public void printUserInfo(Path fileLocation) {
-    printLines(fileLocation, false);
-  }
-
-  public void printList(Path fileLocation) {
-    printLines(fileLocation, true);
-  }
-
-  public void printLines(Path fileLocation, boolean listFormat) {
     System.out.println();
     List<String> fileLines = readFromFile(fileLocation);
     for (int i = 0; i < fileLines.size(); i++) {
-      if (listFormat) {
-        System.out.println("  " + (i + 1) + " - " + fileLines.get(i));
-      } else {
-        System.out.println(fileLines.get(i));
-      }
+      System.out.println(fileLines.get(i));
+    }
+    System.out.println();
+  }
+
+  public void printList(Path fileLocation) {
+    System.out.println();
+    List<String> fileLines = readFromFile(fileLocation);
+    for (int i = 0; i < fileLines.size(); i++) {
+      System.out.println("  " + (i + 1) + " - " + fileLines.get(i));
+    }
+    if (fileLines.size() == 0) {
+      System.out.println("No todos for today! :)");
     }
     System.out.println();
   }
