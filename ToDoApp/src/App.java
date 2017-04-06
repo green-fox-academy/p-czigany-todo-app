@@ -10,14 +10,18 @@ public class App {
     ArgumentHandler handler = new ArgumentHandler(args);
     ToDoList list = new ToDoList();
     Path listFile = Paths.get("../assets/data.txt");
+    Path userInfoFile = Paths.get("../assets/userinfo.txt");
     if (args.length == 0) {
-      list.printUserInfo(Paths.get("../assets/userinfo.txt"));
-    } else if (handler.contains("-l")) {
+      list.printUserInfo(userInfoFile);
+    } else if (args[0].matches("-l")) {
       list.printList(listFile);
-    } else if (handler.contains("-a")) {
+    } else if (args[0].matches("-a")) {
       list.addTask(listFile, handler.getTask());
-    } else if (handler.contains("-r")) {
+    } else if (args[0].matches("-r")) {
       list.removeTask(listFile, handler.getTask());
+    } else {
+      System.out.println("\n  Unsupported argument...");
+      list.printUserInfo(userInfoFile);
     }
   }
 }
