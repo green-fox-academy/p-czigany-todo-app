@@ -15,7 +15,9 @@ public class App {
     } else if (handler.contains("-l")) {
       list.printList(listFile);
     } else if (handler.contains("-a")) {
-      list.printLineToFile(listFile, handler.getTask());
+      list.addTask(listFile, handler.getTask());
+    } else if (handler.contains("-r")) {
+      list.removeTask(listFile, handler.getTask());
     }
   }
 }

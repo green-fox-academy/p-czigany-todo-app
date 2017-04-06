@@ -22,9 +22,9 @@ public class ArgumentHandler {
 
   public String getTask() {
     String task = "";
-    for (int i = 1; i < args.length - 1; i++) {
+    for (int i = 1; i < args.length; i++) {
       task += args[i];
-      if (i < args.length - 2) {
+      if (i < args.length - 1) {
         task += " ";
       }
     }

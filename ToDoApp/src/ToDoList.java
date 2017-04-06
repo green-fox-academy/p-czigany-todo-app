@@ -42,7 +42,7 @@ public class ToDoList {
     }
   }
 
-  public void printLineToFile(Path filePath, String toAdd) {
+  public void addTask(Path filePath, String toAdd) {
     if (toAdd.length() == 0) {
       System.out.println("\n  Unable to add: no task provided\n");
     } else {
@@ -52,6 +52,27 @@ public class ToDoList {
         Files.write(filePath, toPrint, Charset.forName("UTF-8"));
       } catch (IOException ex) {
         System.out.println("I/O Exception occurred while trying to write to a file.");
+      }
+    }
+  }
+
+  public void removeTask(Path filePath, String taskIndexString) {
+    if (taskIndexString.equals("")) {
+      System.out.println("\n  Unable to remove: no index provided\n");
+    } else if (!(taskIndexString.matches("[0-9]+"))) {
+      System.out.println("\n  Unable to remove: index is not a number\n");
+    } else {
+      Integer taskIndex = Integer.valueOf(taskIndexString);
+      List<String> currentList = readFromFile(filePath);
+      if (taskIndex > currentList.size()) {
+        System.out.println("\n  Unable to remove: index is out of bound\n");
+      } else {
+        currentList.remove(taskIndex - 1);
+        try {
+          Files.write(filePath, currentList, Charset.forName("UTF-8"));
+        } catch (IOException ex) {
+          System.out.println("I/O Exception occurred while trying to write to a file.");
+        }
       }
     }
   }
