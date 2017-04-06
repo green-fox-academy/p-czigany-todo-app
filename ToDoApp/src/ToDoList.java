@@ -28,7 +28,7 @@ public class ToDoList {
       System.out.println("  " + (i + 1) + " - " + fileLines.get(i));
     }
     if (fileLines.size() == 0) {
-      System.out.println("No todos for today! :)");
+      System.out.println("  No todos for today! :)");
     }
     System.out.println();
   }
@@ -43,12 +43,16 @@ public class ToDoList {
   }
 
   public void printLineToFile(Path filePath, String toAdd) {
-    try {
+    if (toAdd.length() == 0) {
+      System.out.println("\n  Unable to add: no task provided\n");
+    } else {
       List<String> toPrint = readFromFile(filePath);
       toPrint.add(toAdd);
-      Files.write(filePath, toPrint, Charset.forName("UTF-8"));
-    } catch (IOException ex) {
-      System.out.println("I/O Exception occurred while trying to write to a file.");
+      try {
+        Files.write(filePath, toPrint, Charset.forName("UTF-8"));
+      } catch (IOException ex) {
+        System.out.println("I/O Exception occurred while trying to write to a file.");
+      }
     }
   }
 }
