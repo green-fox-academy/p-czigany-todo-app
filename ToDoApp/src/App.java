@@ -9,7 +9,7 @@ public class App {
     ArgumentHandler handler = new ArgumentHandler(args);
     ToDoList list = new ToDoList();
     if (args.length == 0) {
-      list.printFile(Paths.get("../assets/userinfo.txt"));
+      list.printUserInfo(Paths.get("../assets/userinfo.txt"));
     } else if (handler.contains("l")) {
       list.printList(Paths.get("../assets/data.txt"));
     }

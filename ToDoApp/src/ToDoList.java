@@ -11,7 +11,7 @@ public class ToDoList {
   public ToDoList() {
   }
 
-  public void printFile(Path fileLocation) {
+  public void printUserInfo(Path fileLocation) {
     System.out.println();
     List<String> fileLines = readFromFile(fileLocation);
     for (int i = 0; i < fileLines.size(); i++) {
