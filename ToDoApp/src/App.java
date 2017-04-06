@@ -19,6 +19,8 @@ public class App {
       list.addTask(listFile, handler.getTask());
     } else if (args[0].matches("-r")) {
       list.removeTask(listFile, handler.getTask());
+    } else if (args[0].matches("-c")) {
+      list.checkTask(listFile, handler.getTask());
     } else {
       System.out.println("\n  Unsupported argument...");
       list.printUserInfo(userInfoFile);

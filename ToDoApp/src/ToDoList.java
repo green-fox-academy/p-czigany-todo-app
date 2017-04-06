@@ -47,7 +47,7 @@ public class ToDoList {
       System.out.println("\n  Unable to add: no task provided\n");
     } else {
       List<String> toPrint = readFromFile(filePath);
-      toPrint.add(toAdd);
+      toPrint.add("[ ] " + toAdd);
       try {
         Files.write(filePath, toPrint, Charset.forName("UTF-8"));
       } catch (IOException ex) {
@@ -56,18 +56,39 @@ public class ToDoList {
     }
   }
 
-  public void removeTask(Path filePath, String taskIndexString) {
-    if (taskIndexString.equals("")) {
+  public void removeTask(Path filePath, String stringTaskIndex) {
+    if (stringTaskIndex.equals("")) {
       System.out.println("\n  Unable to remove: no index provided\n");
-    } else if (!(taskIndexString.matches("[0-9]+"))) {
+    } else if (!(stringTaskIndex.matches("[0-9]+"))) {
       System.out.println("\n  Unable to remove: index is not a number\n");
     } else {
-      Integer taskIndex = Integer.valueOf(taskIndexString);
+      int taskIndex = Integer.parseInt(stringTaskIndex) - 1;
       List<String> currentList = readFromFile(filePath);
-      if (taskIndex > currentList.size()) {
+      if (taskIndex + 1 > currentList.size()) {
         System.out.println("\n  Unable to remove: index is out of bound\n");
       } else {
-        currentList.remove(taskIndex - 1);
+        currentList.remove(taskIndex);
+        try {
+          Files.write(filePath, currentList, Charset.forName("UTF-8"));
+        } catch (IOException ex) {
+          System.out.println("I/O Exception occurred while trying to write to a file.");
+        }
+      }
+    }
+  }
+
+  public void checkTask(Path filePath, String stringTaskIndex) {
+    if (stringTaskIndex.equals("")) {
+      System.out.println("\n  Unable to check: no index provided\n");
+    } else if (!(stringTaskIndex.matches("[0-9]+"))) {
+      System.out.println("\n  Unable to check: index is not a number\n");
+    } else {
+      int taskIndex = Integer.parseInt(stringTaskIndex) - 1;
+      List<String> currentList = readFromFile(filePath);
+      if (taskIndex + 1 > currentList.size()) {
+        System.out.println("\n  Unable to check: index is out of bound\n");
+      } else {
+        currentList.set(taskIndex, "[x" + currentList.get(taskIndex).substring(2));
         try {
           Files.write(filePath, currentList, Charset.forName("UTF-8"));
         } catch (IOException ex) {
