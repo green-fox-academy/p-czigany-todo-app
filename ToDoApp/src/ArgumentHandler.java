@@ -12,10 +12,20 @@ public class ArgumentHandler {
   public boolean contains(String argument) {
     if (args.length > 0) {
       for (String arg : args) {
-        if (arg.startsWith("-") && arg.contains(argument))
+        if (arg.startsWith("-") && arg.contains(argument)) {
           return true;
+        }
       }
     }
     return false;
+  }
+
+  public String getTask() {
+    String task = "";
+    for (int i = 1; i < args.length - 1; i++) {
+      task += args[i] + " ";
+    }
+    task += args[args.length - 1];
+    return task;
   }
 }

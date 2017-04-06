@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -38,6 +39,16 @@ public class ToDoList {
     } catch (IOException ex) {
       System.out.println("I/O Exception occurred while trying to read from file.");
       return null;
+    }
+  }
+
+  public void printLineToFile(Path filePath, String toAdd) {
+    try {
+      List<String> toPrint = readFromFile(filePath);
+      toPrint.add(toAdd);
+      Files.write(filePath, toPrint, Charset.forName("UTF-8"));
+    } catch (IOException ex) {
+      System.out.println("I/O Exception occurred while trying to write to a file.");
     }
   }
 }
