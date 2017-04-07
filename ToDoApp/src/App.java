@@ -13,13 +13,13 @@ public class App {
     Path userInfoFile = Paths.get("../assets/userinfo.txt");
     if (args.length == 0) {
       list.printUserInfo(userInfoFile);
-    } else if (args[0].matches("-l")) {
+    } else if (args[0].equals("-l")) {
       list.printList(listFile);
-    } else if (args[0].matches("-a")) {
+    } else if (args[0].equals("-a")) {
       list.addTask(listFile, handler.getTask());
-    } else if (args[0].matches("-r")) {
+    } else if (args[0].equals("-r")) {
       list.removeTask(listFile, handler.getTask());
-    } else if (args[0].matches("-c")) {
+    } else if (args[0].equals("-c")) {
       list.checkTask(listFile, handler.getTask());
     } else {
       System.out.println("\n  Unsupported argument...");
