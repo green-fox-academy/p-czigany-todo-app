@@ -1,3 +1,11 @@
-Walk the dog
-Buy milk
-Do homework
+[x] Sell homework
+[ ] Walk the granny
+[ ] Talk to the dog
+[ ] Buy milk
+[ ] Drink milk
+[ ] Be the drinking
+[ ] Be the milk you want to see in the world
+[ ] Sell the world you want to see in your wallet
+[ ] Dont know
+[ ] Dont know!
+[ ] Dont know.
