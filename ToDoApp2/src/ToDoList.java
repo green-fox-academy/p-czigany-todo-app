@@ -36,7 +36,7 @@ public class ToDoList {
     tasks.add(new ToDo("[ ] " + handler.inputTask()));
   }
 
-  public void removeTask(String [] args) {
+  public void removeTask(String[] args) {
     ArgumentHandler handler = new ArgumentHandler(args);
     tasks.remove(Integer.parseInt(handler.inputTask()) - 1);
   }
@@ -49,5 +49,10 @@ public class ToDoList {
       lines.add(task.printTask());
     }
     handler.printToFile(filePath, lines);
+  }
+
+  public void checkTask(String[] args) {
+    ArgumentHandler handler = new ArgumentHandler(args);
+    tasks.get(Integer.parseInt(handler.inputTask()) -1).complete();
   }
 }
