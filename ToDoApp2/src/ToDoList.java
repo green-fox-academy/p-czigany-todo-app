@@ -36,6 +36,11 @@ public class ToDoList {
     tasks.add(new ToDo("[ ] " + handler.inputTask()));
   }
 
+  public void removeTask(String [] args) {
+    ArgumentHandler handler = new ArgumentHandler(args);
+    tasks.remove(Integer.parseInt(handler.inputTask()) - 1);
+  }
+
   public void listToFile(Path filePath) {
     FileHandler handler = new FileHandler();
     List<String> lines = new ArrayList<>();

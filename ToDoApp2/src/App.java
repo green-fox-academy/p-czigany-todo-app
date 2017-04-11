@@ -16,6 +16,8 @@ public class App {
       } else {
         if (args[0].equals("-a")) {
           taskList.newTaskFromInput(args);
+        } else if (args[0].equals("-r")) {
+          taskList.removeTask(args);
         }
         taskList.listToFile(Paths.get("../assets/data.txt"));
       }
