@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class FileHandler {
 
-  public static List<String> readFromFile(Path fileLocation) {
+  public List<String> readFromFile(Path fileLocation) {
     try {
       return Files.readAllLines(fileLocation);
     } catch (IOException ex) {

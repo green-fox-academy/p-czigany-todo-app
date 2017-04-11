@@ -13,8 +13,9 @@ public class UserInfo {
   }
 
   public void printUserInfo() {
+    FileHandler handler = new FileHandler();
     System.out.println();
-    List<String> fileLines = FileHandler.readFromFile(userInfoFile);
+    List<String> fileLines = handler.readFromFile(userInfoFile);
     for (int i = 0; i < fileLines.size(); i++) {
       System.out.println(fileLines.get(i));
     }

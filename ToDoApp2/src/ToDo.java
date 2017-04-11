@@ -7,11 +7,14 @@ public class ToDo {
   private boolean completed;
 
   public ToDo(String inputText) {
-    this.completed = false;
-    this.description = inputText;
+    if (inputText.substring(0,3).equals("[x]")) {
+      completed = true;
+    } else if (inputText.substring(0,3).equals("[ ]"))
+    completed = false;
+    description = inputText.substring(4);
   }
 
   public String printTask() {
-    return description;
+    return (completed) ? "[x] " + description : "[ ] " + description;
   }
 }

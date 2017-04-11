@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +13,14 @@ public class ToDoList {
 
   private List<ToDo> tasks;
 
-  public ToDoList() {
-    this.tasks = new ArrayList<>();
+  public ToDoList(Path filePath) {
+    FileHandler handler = new FileHandler();
+    List<String> lines = handler.readFromFile(filePath);
+    tasks = new ArrayList<>();
+    for (String line :
+            lines) {
+      tasks.add(new ToDo(line));
+    }
   }
 
   public String printList() {
@@ -22,13 +33,5 @@ public class ToDoList {
       }
     }
     return output;
-  }
-
-  public void addTask(ToDo toAdd) {
-    tasks.add(toAdd);
-  }
-
-  public void removeTask(Integer taskIndex) {
-    this.tasks.remove(taskIndex - 1);
   }
 }
