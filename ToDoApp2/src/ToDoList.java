@@ -1,8 +1,4 @@
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +29,20 @@ public class ToDoList {
       }
     }
     return output;
+  }
+
+  public void newTaskFromInput(String[] args) {
+    ArgumentHandler handler = new ArgumentHandler(args);
+    tasks.add(new ToDo("[ ] " + handler.inputTask()));
+  }
+
+  public void listToFile(Path filePath) {
+    FileHandler handler = new FileHandler();
+    List<String> lines = new ArrayList<>();
+    for (ToDo task:
+    tasks) {
+      lines.add(task.printTask());
+    }
+    handler.printToFile(filePath, lines);
   }
 }

@@ -17,4 +17,13 @@ public class FileHandler {
       return null;
     }
   }
+
+  public void printToFile(Path fileLocation, List<String> toPrint) {
+    try {
+      Files.write(fileLocation, toPrint);
+    } catch (IOException ex) {
+      System.out.println(
+              "I/O Exception occurred while trying to read from file: " + fileLocation.toString());
+    }
+  }
 }

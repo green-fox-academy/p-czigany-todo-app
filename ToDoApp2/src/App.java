@@ -13,6 +13,11 @@ public class App {
       ToDoList taskList = new ToDoList(Paths.get("../assets/data.txt"));
       if (args[0].equals("-l")) {
         System.out.println(taskList.printList());
+      } else {
+        if (args[0].equals("-a")) {
+          taskList.newTaskFromInput(args);
+        }
+        taskList.listToFile(Paths.get("../assets/data.txt"));
       }
     }
   }
